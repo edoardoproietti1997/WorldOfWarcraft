@@ -4,12 +4,22 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
   version="3.1">
   <servlet>
-    <servlet-name>wow</servlet-name>
-    <servlet-class>WorldOfWarcraft.it.dstech.Connessione</servlet-class>
+    <servlet-name>wow1</servlet-name>
+    <servlet-class>wow.Connessione</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>wow</servlet-name>
+    <servlet-name>wow1</servlet-name>
     <url-pattern>/signin</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>wow2</servlet-name>
+    <servlet-class>wow.Connessione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>wow2</servlet-name>
+    <url-pattern>/registrazione</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>

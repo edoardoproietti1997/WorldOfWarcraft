@@ -1,4 +1,4 @@
-package it.dstech;
+package wow;
 
 public class Utente
 {

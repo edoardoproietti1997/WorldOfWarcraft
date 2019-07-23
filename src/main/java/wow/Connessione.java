@@ -1,4 +1,4 @@
-package it.dstech;
+package wow;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,12 +14,12 @@ public class Connessione extends HttpServlet
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		boolean flag = true ;
-		if ("1".equals(req.getAttribute("signing")))
+		if ("1".equals(req.getParameter("signing")))
 		{
 			do
 			{
 				//vai alla pagina adibita alla creazione di un nuovo utente
-				getServletContext().getRequestDispatcher("/").forward(req, resp);
+				getServletContext().getRequestDispatcher("/newUser.jsp").forward(req, resp);
 				String user = req.getParameter("username");
 				try
 				{
@@ -38,6 +38,7 @@ public class Connessione extends HttpServlet
 				if (flag)
 				{
 					PrintWriter out= resp.getWriter();
+					getServletContext().getRequestDispatcher("/newUser.jsp").forward(req, resp);
 					out.println("<h1><username già esistente, per favore scegli un'altro username</b></h1>");
 				}
 				else 
@@ -61,12 +62,16 @@ public class Connessione extends HttpServlet
 				}
 			} while (flag);
 			//memo il metodo risponde true se l'utente esiste , quindi in questo caso continua a creare un nuovo utente se esiste
+			
 		}
-		else 
+		else if ("2".equals(req.getParameter("signing")))
+		{	
+			getServletContext().getRequestDispatcher("/accesso.jsp").forward(req, resp);
+		}
+		else
 		{
-			//vai alla pagina per l'accesso di un untente registrato che chiamerà il dopost per i controlli
+			getServletContext().getRequestDispatcher("/welcome.jsp").forward(req, resp);
 		}
-		
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -95,6 +100,7 @@ public class Connessione extends HttpServlet
 			if (flag == false)
 			{
 				PrintWriter out= resp.getWriter();
+				getServletContext().getRequestDispatcher("/accesso.jsp").forward(req, resp);
 				out.println("<h1><username non esistente, creane uno nuovo o inserisci un username già registrato</b></h1>");
 			}
 		} while (flag == false);
@@ -117,9 +123,10 @@ public class Connessione extends HttpServlet
 			if (flag)
 			{
 				PrintWriter out= resp.getWriter();
+				getServletContext().getRequestDispatcher("/accesso.jsp").forward(req, resp);
 				out.println("<h1>passworld non corretta, reinserisci la passworld</b></h1>");
 			}
 		}while (flag);
-		//vai alla tua bacheca 
+		getServletContext().getRequestDispatcher("/bentornato.jsp").forward(req, resp);
 	}
 }

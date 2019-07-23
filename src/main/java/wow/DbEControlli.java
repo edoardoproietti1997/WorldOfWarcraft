@@ -1,4 +1,4 @@
-package it.dstech;
+package wow;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -59,5 +59,15 @@ public class DbEControlli
 			}
 		}
 		return flag;
+	}
+	public static Utente messaggioBenvenuto (String username)
+	{
+		Class.forName(JDBC_DRIVER);
+		Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String query = "";
+		PreparedStatement createStatement = conn.prepareStatement(query);
+		ResultSet result = createStatement.executeQuery(query);
+		Utente utente = new Utente(username, passworld, nome, cognome, mail, tipo);
+		return utente;
 	}
 }
