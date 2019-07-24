@@ -4,9 +4,10 @@
 
 <html>
 <body>
-
+<% String username = (String)request.getAttribute("username");
+%>
   <form action = "" method = "GET">
-  
+  <p>bentornato <% %></p>
   </select>
     </form>
 </body>

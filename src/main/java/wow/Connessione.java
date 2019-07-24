@@ -126,7 +126,9 @@ public class Connessione extends HttpServlet
 				out.println("<h1>passworld non corretta, reinserisci la passworld</b></h1>");
 			}
 		}while (flag);
-		req.getParameter("username");
+		String user = req.getParameter("username");
+		req.setAttribute("username", user);
 		getServletContext().getRequestDispatcher("/bentornato.jsp").forward(req, resp);
+		
 	}
 }
