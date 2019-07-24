@@ -7,6 +7,7 @@
 <% String username = (String)request.getAttribute("username");
 %>
   <form action = "" method = "GET">
+  <input type = "hidden" name = "username" value ="<%=username%>">
   <p>bentornato <% %></p>
   </select>
     </form>
