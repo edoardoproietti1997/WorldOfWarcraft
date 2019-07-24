@@ -1,5 +1,4 @@
 package wow;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -127,6 +126,7 @@ public class Connessione extends HttpServlet
 				out.println("<h1>passworld non corretta, reinserisci la passworld</b></h1>");
 			}
 		}while (flag);
+		req.getParameter("username");
 		getServletContext().getRequestDispatcher("/bentornato.jsp").forward(req, resp);
 	}
 }
